@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body,div,p,strong,a{margin:0; padding:0;}
+	body{text-align: center; padding-top:40px; font-size:14px; font-family:"微软雅黑";}
+	#box{width: 400px; height: 400px; border:10px ridge #ccc; margin:50px auto 0; position:relative;}
+	#box img{width: 400px; height:400px;}
+	#box a{width: 40px; height: 40px; background:rgba(255,255,255,0.4); font-size:20px; line-height: 40px; font-weight: bold; color:#ccc; position:absolute; top:160px; text-decoration:none;}
+	#box a:hover{color:#fff;}
+	#box #prev{left:10px;}
+	#box #next{right:10px;}
+	#box span{width: 400px; height: 30px; position: absolute; top:-50px; left:0; line-height: 30px; }
+	#box strong,#box p{width: 400px; height: 30px; line-height: 30px; background: #000; color:#fff; position:absolute;}
+	#box strong{left:0; top:0;}
+	#box p{left:0; bottom:0;}
+	</style>
+</head>
+<body>
+<input type="button" value="循环播放" />
+<input type="button" value="顺序播放" />
+
+<div id="box">
+	<span>循环播放:图片可从最后一张,跳到第一张!</span>
+
+	<a id="prev" href="javascript:void">&lt;</a>
+	<a id="next" href="javascript:void">&gt;</a>
+	<p id="load">图片加载信息...</p>
+	<strong id="num">图片序号...</strong>
+	<img id="img1" src="img/k.jpg" />
+</div>
+<script>
+//初始化变量
+var prev=document.getElementById("prev");
+var next=document.getElementById("next");
+var oImg=document.getElementById("img1");
+var load=document.getElementById("load");
+var oNum=document.getElementById("num");
+
+var pics=["img/s.jpg","img/z.jpg","img/w.jpg","img/k.jpg"];
+var msg=["游园惊梦","美猴王","我是土豪","芝加哥教父"];
+var num=3; //数组下标
+//代码功能
+function show(){//无参函数
+	oImg.src=pics[num];
+	load.innerHTML=msg[num];
+	oNum.innerHTML=(num+1)+"/"+pics.length;
+	console.log(num);
+}
+
+prev.onclick=function(){//匿名函数
+	num--;
+	if(num<0) num=pics.length-1;
+	show();	
+}
+
+next.onclick=function(){
+	num++;
+	if(num>pics.length-1) num=0;
+	show();
+}
+
+</script>	
+</body>
+</html>

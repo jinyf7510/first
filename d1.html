@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>王者周年庆1</li>
+			<li>王者周年庆2</li>
+			<li>王者周年庆3</li>
+			<li>王者周年庆4</li>
+			<li>王者周年庆1</li>
+			<li>王者周年庆2</li>
+			<li>王者周年庆3</li>
+			<li>王者周年庆54</li>
+		</ul>
+	</div>	
+<script>
+var oUl=document.getElementsByTagName("ul");
+var oLi=document.getElementsByTagName("li");
+
+//删除元素: 父标签.removeChild(单个元素名称);
+oUl[0].removeChild(oLi[0]);
+oUl[0].removeChild(oLi[oLi.length-1]);
+
+oUl[0].children; //查询ul的所有子元素
+oUl[0].children[1]; //查询ul的某个子元素
+
+//下面二者等同,都是查询父级元素
+oLi[0].parentNode;
+oLi[0].parentElement;
+
+//删除UL中倒数第二个元素
+oLi[0].parentElement.removeChild(oLi[oLi.length-2]);
+</script>
+</body>
+</html>
